@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    %sveltekit.head%
+  </head>
+  <body>
+    <!--TODO: this, alongside +layout.svelte top code does darkmode -->
+    <!-- <script type="module">
+      import { persistDarkModeFromLastSession } from "../src/lib/utils.js";
+
+      persistDarkModeFromLastSession(); -->
+
+    <script>
+      const isDarkModeLS = localStorage.getItem("isDarkModeLS").toString();
+      if (isDarkModeLS == "true") {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+    </script>
+    <!--TODO: this, alongside +layout.svelte top code does darkmode -->
+
+    <div>%sveltekit.body%</div>
+  </body>
+</html>

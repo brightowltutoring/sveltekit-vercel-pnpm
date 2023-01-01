@@ -1,0 +1,166 @@
+{#key num }
+<Kajax />
+{/key}
+
+<script>
+    import SixMathEqnAnim from "$lib/SixMathEqnAnim.svelte";
+    // import Katexer from "$lib/MathJaxer.svelte"
+    // import Katexer from "$lib/Katexer.svelte"
+    import Kajax from "$lib/Kajax.svelte"
+    import { isDarkMode } from "$lib/store";
+  
+    let numMax = 1000
+    let numMDMax = 1
+    $: num = numMax
+    $: numMD = numMDMax
+
+     let equations = [
+        "\\int_{M}d\\omega=\\int_{\\partial M}\\omega",
+        "G_{\\mu\\nu}\\,+\\,\\Lambda g_{\\mu\\nu}\\,=\\,\\kappa T_{\\mu\\nu}",
+        " (i\\hbar\\gamma^\\mu \\partial_\\mu  - mc) \\ \\psi = 0 ",
+        "\\left\\langle{e^{-\\beta\\,W}}\\right\\rangle = \\,{e^{-\\beta\\,\\triangle\\,F}}",
+        "z_{n+1}\\,=\\,z_{n}^{2}\\,+\\,c",
+    ];
+
+
+    let x=2
+
+    $: proseInvert = $isDarkMode ? "prose-invert" : ""
+</script>
+
+
+
+<!-- $$ 
+
+\cancel{\int_0^{\infty} f(x) dx}
+
+$$
+
+<k d k={"\\cancel{ \\int_0\^\{\\infty\}f\(x\)dx }"}/> -->
+
+<!-- <article > -->
+<article class="prose lg:prose-lg {proseInvert}">
+
+    ayo
+<SixMathEqnAnim />
+
+  <!-- <h1>This page has math is processed by both Katex (green) and Mathjax (blue)</h1> -->
+  <!-- <h1>Garlic bread with cheese: What the science tells us</h1> -->
+ 
+
+
+
+
+<!-- $$e^{3/2} $$ -->
+
+$$
+\underbrace{u'-P(x)u^2-Q(x)u-R(x)}_{\text{=0, since~$u$ is a particular solution.}}
+$$
+
+
+<span class=" text-7xl flex justify-center">
+
+{x}$^2$={x**2}
+
+</span>
+
+<div class="flex justify-center">
+    <input type="range" min="1"  bind:value={x} />
+</div>
+
+
+# The content of this page is written in a markdown file with svelte components (tailwind too), possible due to MDsveX! 
+## The **math** on this page is written in markdown using Katex (black), Katex (green), and Mathjax (blue), the latter two of which are lazy rendered with the Intersection Observer API!
+* the square-slider above using svelte binding of a JS variable ... again this is possible due to MDsveX
+  * the newest version of mathjax is about as performant as katex; mathjax has a wider adoption of latex functionality
+  * the math markdown uses katex as a plugin and is not lazy-rendered .... it is however easier to write
+  
+
+<!-- This markdown math is centered. Oddly the addition of this single markdown slow the katex rendering.
+Fortunately it seems to scale very slowly with more markdown (comment out each container below) -->
+
+<div class="p-4">
+    <input type="number" min="1" bind:value={numMD} />
+    <input type="range" min="1" bind:value={numMD} />
+</div>
+
+# {numMD } lines of markdown immediately below
+
+{#each Array(numMD) as _,j }
+{j+1}
+
+$$
+E=mc^2 
+$$
+
+{/each}
+  
+<!-- This also centers with katex + css. 
+The katex components come in use with more detailed styling AND/OR lots of math to render to a single page ... in which cased I have implemented Intersection Observer logic -->
+
+
+* pull this slider over to show that more equations doesnt slow the page down (capped at 10,000 but could be larger)
+
+<input type="number" min="1" max={numMax} bind:value={num} />
+<input type="range" min="1" max={numMax} bind:value={num} />
+
+{#each Array(num) as _,j }
+    {j+1 }
+        <p class="p-1 text-indigo-700" d m={"\\cancelto{0}{\\int\\limits_\{-\\infty\}\^\{\\infty\}\ e\^\{-x\^\{2\}\}\ \\\,\ dx\ =\ \\sqrt\{\\pi\}}"}/>
+        <p class="p-1 text-green-700" d k={"\\int\\limits_\{-\\infty\}\^\{\\infty\}\ e\^\{-x\^\{2\}\}\ \\\,\ dx\ =\ \\sqrt\{\\pi\}"}/>
+    {#each equations as eqn,k }
+    <div>
+        <p class="p-1 text-indigo-700" d k={eqn}/>
+        <p class="p-1 text-green-700" d m={eqn}/>
+    </div>
+    {/each}
+{/each}
+
+
+
+
+</article>
+
+
+
+
+
+<!-- Useful Markdown styles .. removed from tailwind   -->
+<!-- 
+<style>
+    blockquote {  
+        margin: 0;  
+        padding-left: 1.4rem;  
+        border-left: 8px solid #bbb; 
+        }
+    ul { 
+    list-style-type: disc; 
+    list-style-position: inside; 
+    }
+    ol { 
+    list-style-type: decimal; 
+    list-style-position: inside; 
+    }
+    ul ul, ol ul { 
+    list-style-type: circle; 
+    list-style-position: inside; 
+    margin-left: 15px; 
+    }
+    ol ol, ul ol { 
+    list-style-type: lower-latin; 
+    list-style-position: inside; 
+    margin-left: 15px; 
+    }
+    h1 {
+    @apply text-2xl;
+    }
+    h2 {
+    @apply text-xl;
+    }
+    h3 {
+    @apply text-lg;
+    }
+    a {
+    @apply text-blue-600 underline;
+    }
+</style> -->

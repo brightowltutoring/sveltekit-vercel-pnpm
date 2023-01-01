@@ -1,0 +1,52 @@
+<script>
+  import { isDarkMode } from "$lib/store"; 
+  import InView from "$lib/Wrappers/InView.svelte";
+ 
+  export let title = "Great physics tutor!!"
+  export let name = "Thomas Finn"
+  export let date = '2022-06-08'
+  
+</script>
+
+<article class="prose relative {$isDarkMode && "prose-invert"} md:pb-[5vw] ">  
+
+  <div class="absolute">
+
+   # {title}
+
+    <div class="flex flex-row">
+      {#each Array(5) as _,i }
+
+      <InView single once onview={ target => {
+          console.log("💫");
+          target.classList.remove("opacity-0");
+          target.src = "/star.webp";
+        }} >
+
+       <img src="" class="opacity-0 transition-opacity duration-300 ease-in hover:scale-125" alt="star" style="width:40px; height:40px" >
+       
+      </InView>
+
+      {/each}
+
+    </div>
+
+    <div class="italic"> on {date} </div>
+
+    <slot/>
+
+    <b class="absolute right-0 bottom-0 -my-10 mx-5 ">{name}</b>
+
+  </div>
+
+</article>
+
+
+
+
+<!-- <style>
+  h1,h2,h3,h4{
+    margin:  0;
+    padding: 0;
+  }
+</style> -->

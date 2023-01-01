@@ -1,0 +1,19 @@
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.output
+
+
+# I guess i cannot gitignore env files, since deployment doesnt work ... stripe public keys yada
+!.env.example
+.env.*
+.env
+# COMMENTED OUT since disallowing stripe public keys in git commit
+
+/.vscode
+
+# dec 31,2022: i'm not yet sure if .vercel shoud be gitignored ...
+# /.vercel
+.vercel

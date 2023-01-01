@@ -1,0 +1,142 @@
+
+<MathRenderer />
+<script>
+  import MathRenderer from "$lib/Kajax.svelte";
+</script>
+
+<!-- 
+<button on:click={()=>{
+MathJax.typeset();  
+}}>typeset
+</button> -->
+
+<p class="text-3xl flex justify-center" d m={`\\cancelto{0}{x}`}/>
+<p class="text-3xl flex justify-center" d k={`\\cancel{x}`}/>
+
+
+<div id="charges-1">
+
+  ## Two isolated point charges as shown are at a fixed distance apart (segment BC). At which point is it possible for the electric field strength to be zero?
+
+  <img style="margin: 0 auto;  display:flex; width: 65vw; min-width: 280px; max-width: 600px;"
+        src=" https://raw.githubusercontent.com/brightowltutoring/web/main/two-charges.png"
+      />
+
+  The electric fields due to charges $Q_B$ and $Q_C$ for:
+    * **segment BC:** both point from C to B
+    * **segment CD:** point in opposite directions
+    * **segment AB:** point in opposite directions
+
+
+  Therefore only the outer segments CD and AB are feasible for the net electric field to cancel — i.e. we need only compare the magnitudes from each charge.
+
+  - Since the magnitude of the electric field depends on both the charge magnitude, and "square-inversely" to the separation distance — i.e. $E \sim |Q|/d^2$ — then only a point, call it X, in segment CD is feasible as it is "close to a weak source and far from a strong source"
+
+
+
+  ### Explicit calculation
+
+  If we can assume the fields are in opposite directions then we need only equate the magnitudes for cancellation to occur:
+
+  <div class="hScroll">
+
+  $$
+
+  \begin{aligned}
+    |E_B| &= |E_C|  \\ \\
+      \frac{  \cancel{ k } |Q_B| }{ |BX|^2 } &= \frac{  \cancel{ k } |Q_C| }{ |CX|^2 }  && \text{where X is some variable point on the interval} \\  \\
+    %  \frac{ \cancelto{7 \mu C}{ |Q_B| } }{  \cancelto{2 \mu C}{ |Q_C|  }} &= \frac{   |BX|^2 }{ |CX|^2 } \\
+      \therefore |BX| &= \sqrt{\frac{ 7 }{ 2} }|CX| \\ \\
+      \therefore |BX| & > |CX| \\
+  \end{aligned}
+
+
+  $$
+
+  </div>
+
+  Since we were limited to segments AB and CD, this result forces the point X to be in CD.
+
+</div>
+
+<div id="charges-2">
+
+  ## Four point charges have the same magnitude of 2.4 × 10⁻¹² C and are fixed to the corners of a square that is 4.0 cm on a side. Three of the charges are positive and one is negative. What is the magnitude and direction of the net electric field that exists at the centre of the square?
+
+  Using symmetry arguments, at the center of the square:
+     * the diagonally like-charges cancel along their joining diagonals
+     * the diagonally opposite-charges add along their joining diagonals, going from positive to negative
+
+
+  With this information therefore the magnitude is twice the magnitude along the positive-negative direction. If we call $D$ the diagonal-to-center distance, and $a$ as the side-length of the square
+
+  where $D^2 = (\frac{a}{2})^2 +  (\frac{a}{2})^2 = 2(\frac{a}{2})^2$ results from Pythagoras' Theorem. Converting everything to SI units (and then omitting the SI unit in the calculation below):
+
+  <div class="hScroll">
+
+    $$
+
+    \begin{aligned} 
+      |\vec{E}_{ \text{ net @center }}| 
+      & = 4 \cdot \frac{ (9 \times 10^{9}) (2.4 \times 10^{-12}) }{  (4 \times 10^{-2})^2 }  \\
+      & = 4 \cdot \frac{ (9 ) (2.4) }{  16  }  \times 10^{9-12-(-4)}\\ 
+      & = 5.4 \times 10^{1} \text{ N } 
+    \end{aligned}
+
+    $$
+
+  </div>
+
+  <div class="hScroll">
+
+    $$
+    \therefore \vec{E}_{ \text{ net @center }} = \textbf{ 54 N, along diagonal from positive to negative charge} 
+    $$
+
+  </div>
+
+</div>
+
+ <div id="circuits-1">
+
+  ## A cell has an emf of 8.0 V and an internal resistance of 2.0 Ω. The ideal voltmeter reads 6.4 V. What is the resistance of R?
+
+   - A. 0.8 Ω
+   - B. 2.0 Ω
+   - C. 4.0 Ω
+   - D. 8.0 Ω
+
+
+  <img style=" margin: 0 auto; display:flex;width: 65vw;min-width: 280px;max-width: 600px;" src="https://raw.githubusercontent.com/brightowltutoring/web/main/circuits-1.png"/>
+
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+<style>
+  .hScrollB {
+    overflow: auto;
+    white-space: nowrap;
+  }
+
+  .hScroll {
+    overflow: auto;
+    white-space: nowrap;
+    margin: 0 30;
+    background-color: var(--correctColour);
+  }
+
+  /* li { 
+    height:10px;
+
+  } */
+
+</style>

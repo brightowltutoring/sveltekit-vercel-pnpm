@@ -1,0 +1,52 @@
+{#key num }
+<MathLazyRenderer />
+{/key}
+
+<script>
+
+    import MathLazyRenderer from "$lib/MathJaxer.svelte"
+    import { isDarkMode } from "$lib/store";
+  
+    let numMax = 1000
+    let num = numMax
+
+
+    let equations = [
+        "\\int_{M}d\\omega=\\int_{\\partial M}\\omega",
+        "G_{\\mu\\nu}\\,+\\,\\Lambda g_{\\mu\\nu}\\,=\\,\\kappa T_{\\mu\\nu}",
+        " (i\\hbar\\gamma^\\mu \\partial_\\mu  - mc) \\ \\psi = 0 ",
+        "\\left\\langle{e^{-\\beta\\,W}}\\right\\rangle = \\,{e^{-\\beta\\,\\triangle\\,F}}",
+        "z_{n+1}\\,=\\,z_{n}^{2}\\,+\\,c",
+    ];
+
+
+    let x=2
+
+    $: proseInvert = $isDarkMode ? "prose-invert" : ""
+</script>
+
+
+
+
+<article class="prose lg:prose-lg {proseInvert}">
+
+
+# This page lazy-rendered using Mathjax (using tex-mml-chtml.js NOT svg)
+
+<input type="number" min="1" max={numMax} bind:value={num} />
+<input type="range" min="1" max={numMax} bind:value={num} />
+
+## {num} sections; { (num*equations.length)} equations below 
+
+{#each Array(num) as _,j } 
+    <div>{j+1}</div>
+    {#each equations as eqn}
+    <p class="p-1 text-red-400" d m={eqn}/>
+    {/each}
+{/each}
+
+
+
+
+</article>
+
