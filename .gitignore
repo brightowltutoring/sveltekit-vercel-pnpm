@@ -6,6 +6,7 @@ node_modules
 .output
 
 
+
 # I guess i cannot gitignore env files, since deployment doesnt work ... stripe public keys yada
 !.env.example
 .env.*
@@ -16,4 +17,3 @@ node_modules
 
 .vercel
 
-.prettierignore

@@ -14,7 +14,7 @@
       persistDarkModeFromLastSession(); -->
 
     <script>
-      const isDarkModeLS = localStorage.getItem("isDarkModeLS").toString();
+      const isDarkModeLS = localStorage.getItem("isDarkModeLS");
       if (isDarkModeLS == "true") {
         document.body.classList.add("dark-mode");
       } else {
